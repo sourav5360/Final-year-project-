@@ -68,6 +68,6 @@ display.display();
 
 delay(5000);
 
-display.clearDisplay();
+display.clearDisplay()
 
 }
