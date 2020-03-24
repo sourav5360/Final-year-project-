@@ -72,16 +72,3 @@ display.clearDisplay()
 
 }
   
-if(Text == "text" && Phone == "phone")
-
-{ display.println(Date);
-
-display.display();
-
-display.println(Time);
-
-display.display();
-
-display.clearDisplay();
-
-}
