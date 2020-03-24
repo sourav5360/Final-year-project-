@@ -613,3 +613,21 @@ int16_t Adafruit_GFX::height(void)
 { 
   return _height; 
 }
+
+void Adafruit_GFX::invertDisplay(boolean i) 
+{
+  // do nothing, can be subclassed
+}
+
+
+// return the size of the display which depends on the rotation!
+int16_t Adafruit_GFX::width(void) 
+{ 
+  return _width; 
+}
+ 
+int16_t Adafruit_GFX::height(void) 
+{ 
+  return _height; 
+}
+
