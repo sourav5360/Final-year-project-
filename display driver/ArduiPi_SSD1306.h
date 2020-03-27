@@ -1,16 +1,3 @@
-/******************************************************************
- This is the common ArduiPi include file for ArduiPi board
- 
-02/18/2013 	Charles-Henri Hallard (http://hallard.me)
-						Modified for compiling and use on Raspberry ArduiPi Board
-						LCD size and connection are now passed as arguments on 
-						the command line (no more #define on compilation needed)
-						ArduiPi project documentation http://hallard.me/arduipi
-
- Written by Charles-Henri Hallard for Fun .
- All text above must be included in any redistribution.
-						
- ******************************************************************/
 
 #ifndef _ArduiPi_SSD1306_H
 #define _ArduiPi_SSD1306_H
