@@ -1,4 +1,4 @@
-How to run demo:
-gcc demo.c ssd1306_i2c.c -lwiringPi -o demo
+How to run code:
+gcc respberry.c ssd1306_i2c.c -lwiringPi -o respberry
 
-./demo
+./respberry
