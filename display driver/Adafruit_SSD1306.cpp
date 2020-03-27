@@ -1,31 +1,3 @@
-/*********************************************************************
-This is a library for our Monochrome OLEDs based on SSD1306 drivers
-
-  Pick one up today in the adafruit shop!
-  ------> http://www.adafruit.com/category/63_98
-
-These displays use SPI to communicate, 4 or 5 pins are required to  
-interface
-
-Adafruit invests time and resources providing this open source code, 
-please support Adafruit and open-source hardware by purchasing 
-products from Adafruit!
-
-Written by Limor Fried/Ladyada  for Adafruit Industries.  
-BSD license, check license.txt for more information
-All text above, and the splash screen below must be included in any redistribution
-
-02/18/2013 	Charles-Henri Hallard (http://hallard.me)
-						Modified for compiling and use on Raspberry ArduiPi Board
-						LCD size and connection are now passed as arguments on 
-						the command line (no more #define on compilation needed)
-						ArduiPi project documentation http://hallard.me/arduipi
-07/01/2013 	Charles-Henri Hallard 
-						Reduced code size removed the Adafruit Logo (sorry guys)
-						Buffer for OLED is now dynamic to LCD size
-						Added support of Seeed OLED 64x64 Display
-
-*********************************************************************/
 
 #include "./ArduiPi_SSD1306.h" 
 #include "./Adafruit_GFX.h"
