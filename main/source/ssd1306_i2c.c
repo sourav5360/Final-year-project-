@@ -778,5 +778,3 @@ void ssd1306_drawChar(int x, int y, unsigned char c, int color, int size)
 		}
 	}
 }
-int 
-ifelse
