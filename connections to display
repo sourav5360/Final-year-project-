@@ -42,5 +42,5 @@ git clone https://github.com/hallard/ArduiPi_OLED
 
 5.  detect if the oled is connect by issue a
        sudo i2cdetect  -y 1
-6.  run a program and check if everthing is working
+6.  run a program and check if everthing is working.
 
