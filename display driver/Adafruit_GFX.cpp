@@ -589,4 +589,14 @@ int16_t Adafruit_GFX::height(void)
   return _height; 
 }
 
+// return the size of the display which depends on the rotation!
+int16_t Adafruit_GFX::width(void) 
+{ 
+  return _width; 
+}
+ 
+int16_t Adafruit_GFX::height(void) 
+{ 
+  return _height; 
+}
 
