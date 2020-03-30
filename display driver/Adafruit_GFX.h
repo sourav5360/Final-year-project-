@@ -79,6 +79,15 @@ class Adafruit_GFX {
   uint8_t  textsize;
   uint8_t  rotation;
   boolean  wrap; // If set, 'wrap' text at right edge of display
-};
+}; 
+protected:
+  int16_t  WIDTH, HEIGHT;   // this is the 'raw' display w/h - never changes
+  int16_t  _width, _height; // dependent on rotation
+  int16_t  cursor_x, cursor_y;
+  uint16_t textcolor, textbgcolor;
+  uint8_t  textsize;
+  uint8_t  rotation;
+  boolean  wrap; // If set, 'wrap' text at right edge of display
+}; 
 
 #endif
