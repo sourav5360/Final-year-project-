@@ -113,7 +113,7 @@ int main(int arg, char *args[]) {
 		
 		if( bytes_read > 0 ) {
 			printf("received [%s]\n", buf);
-			//char* text = "This is demo for SSD1306 i2c driver for Raspberry Pi";
+			//char* text = "Raspberry Pi";
 			ssd1306_clearDisplay();
 			ssd1306_drawString(buf);
 			ssd1306_display();
@@ -133,7 +133,7 @@ int main(int arg, char *args[]) {
 	ssd1306_clearDisplay();
 	delay(5000);
 
-	char* text = "This is demo for SSD1306 i2c driver for Raspberry Pi";
+	char* text = "Raspberry Pi";
 	ssd1306_drawString(text);
 	ssd1306_display();
 	delay(5000);
