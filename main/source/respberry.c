@@ -129,7 +129,7 @@ int main(int arg, char *args[]) {
     close(s);
 
 
-	ssd1306_display(); //Adafruit logo is visible
+	ssd1306_display();
 	ssd1306_clearDisplay();
 	delay(5000);
 
