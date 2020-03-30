@@ -32,7 +32,7 @@
 #define	OLED_SEEED_I2C_128x64			4
 #define	OLED_SEEED_I2C_96x96			5
 
-#define OLED_LAST_OLED						6 /* always last type, used in code to end array */
+#define OLED_LAST_OLED						6 /* used in code to end array */
 
 
 static const char * oled_type_str[] = {
