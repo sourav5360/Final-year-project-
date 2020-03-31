@@ -564,4 +564,8 @@ void Adafruit_SSD1306::clearDisplay(void)
 {
   memset(poledbuff, 0, (ssd1306_lcdwidth*ssd1306_lcdheight/8));
 }
+void Adafruit_SSD1306::clearDisplay(void) 
+{
+  memset(poledbuff, 0, (ssd1306_lcdwidth*ssd1306_lcdheight/8));
+}
 
