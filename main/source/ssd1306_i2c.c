@@ -165,7 +165,7 @@ void ssd1306_drawPixel(int x, int y, unsigned int color)
 	if ((x < 0) || (x >= WIDTH) || (y < 0) || (y >= HEIGHT))
 		return;
 
-	// check rotation, move pixel around if necessary
+	// check the rotation, move pixel around if necessary
 	switch (rotation) {
 	case 1:
 		ssd1306_swap(x, y);
