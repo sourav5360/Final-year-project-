@@ -24,4 +24,4 @@ Shutdown your Pi using :
 
 sudo halt
 
-Wait ten seconds, disconnect the power to your Pi and you are now ready to connect your I2C hardware
+Wait for ten seconds, disconnect the power to your Pi and you are now ready to connect your I2C hardware
