@@ -73,7 +73,7 @@ int main(int arg, char *args[]) {
     loc_addr.rc_channel = (uint8_t) 1;
     bind(s, (struct sockaddr *)&loc_addr, sizeof(loc_addr));
 
-    // put socket to listening 
+    // put socket into listening 
 
 	listen(s, 1);
 	pthread_t thrd1, thrd2;
