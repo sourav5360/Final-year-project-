@@ -149,3 +149,4 @@ int main(int arg, char *args[]) {
 	ssd1306_fillRect(80, 10, 130, 50, WHITE);
 	ssd1306_display();
 } 
+else  x=0
