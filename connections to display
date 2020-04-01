@@ -24,7 +24,7 @@ SDA
 
 1. First of all, we need to update the Pi software to the latest, issue
         sudo apt-get update
-           sudo apt-get upgrade
+           sudo apt-get upgrade.
 
 2. Enable I2C and SPI modules directly with raspi-config tool, issue a
                    sudo raspi-config
