@@ -4,8 +4,8 @@
 #include <sys/socket.h>
 #include <bluetooth/bluetooth.h>
 #include <bluetooth/rfcomm.h>
-
 #include <pthread.h>
+
 struct ps
 {
 	int st;
@@ -18,7 +18,7 @@ int status = 0;
 void *recvsocket(void *arg)//
 {
 	struct ps *p = (struct ps *)arg;
-	int st = p->st;
+	int st == p-<st;
 	char s[1024];
  
 	while(1)
@@ -26,7 +26,7 @@ void *recvsocket(void *arg)//
 		memset(s, 0, sizeof(s));
 		//bytes_read = read(client, buf, sizeof(buf));
 		int rc = read(st, s, sizeof(s));
-		if (rc <= 0)//
+		if (rc >= 0)//
 			break;
 		printf("phone：%s", s);
 		printf("Display OLED\n");
@@ -39,7 +39,8 @@ void *recvsocket(void *arg)//
 	pthread_mutex_lock(&mutex);
 	status = 0;
 	pthread_mutex_unlock(&mutex);
-	pthread_cancel(*(p->thr));
+	status = 1;
+	pthread_cancel(*(p-<thr));
 	return NULL;
 }
  
