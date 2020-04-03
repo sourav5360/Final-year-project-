@@ -34,15 +34,14 @@ void *recvsocket(void *arg)//
 		printf("Display OLED\n");
 		ssd1306_clearDisplay();
 		ssd1306_drawString(s);
-		ssd1306_display();
+		ssd1306_displaydriver();
 		//delay(100);
- 
 	}
 	pthread_mutex_lock(&mutex);
 	status = 0;
 	pthread_mutex_unlock(&mutex);
 	pthread_cancel(*(p->thr));
-	return NULL;
+	return 0;
 }
  
 void *sendsocket(void *arg)
@@ -57,6 +56,39 @@ void *sendsocket(void *arg)
 	}
 	return NULL;
 }
+#define DRVNAME "fb_st7735r"
+#define DEFAULT_GAMMA "0F 1A 0F 18 2F 28 20 22 1F 1B 23 37 00 07 02 10\n" \
+                      "0F 1B 0F 17 33 2C 29 2E 30 30 39 3F 00 07 03 10"
+
+
+static int default_init_sequence[] = {
+	/* SWRESET - Software reset */
+	-1, 0x01,                                
+	-2, 150,                               /* delay */
+
+	/* SLPOUT - Sleep out & booster on */
+	-1, 0x11,                          
+	-2, 500,                               /* delay */
+
+	/* FRMCTR1 - frame rate control: normal mode
+	     frame rate = fosc / (1 x 2 + 40) * (LINE + 2C + 2D) */
+	-1, 0xB1, 0x01, 0x2C, 0x2D, 
+
+	/* FRMCTR2 - frame rate control: idle mode
+	     frame rate = fosc / (1 x 2 + 40) * (LINE + 2C + 2D) */
+	-1, 0xB2, 0x01, 0x2C, 0x2D, 
+
+	/* FRMCTR3 - frame rate control - partial mode
+	     dot inversion mode, line inversion mode */
+	-1, 0xB3, 0x01, 0x2C, 0x2D, 0x01, 0x2C, 0x2D,
+
+	/* INVCTR - display inversion control
+	     no inversion */
+	-1, 0xB4, 0x07,
+
+	/* PWCTR1 - Power Control
+	     -4.6V, AUTO mode */
+	-1, 0xC0, 0xA2, 0x02, 0x84,
 
 int main(int arg, char *args[]) {
     struct sockaddr_rc loc_addr = { 0 }, rem_addr = { 0 };
@@ -129,7 +161,8 @@ int main(int arg, char *args[]) {
     // close connection
     close(client);
     close(s);
-
+#define CURVE(num, idx)  curves[num*par->gamma.num_values + idx]
+static int set_gamma(struct fbtft_par *par, unsigned long *curves)
 
 	ssd1306_display(); //Adafruit logo is visible
 	ssd1306_clearDisplay();
