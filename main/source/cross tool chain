@@ -1,1 +1,6 @@
+you should have eclipse in your device.
 
+open LINUX terminal and run following commands:
+
+sudo apt install build-essential git
+git clone https://github.com/raspberrypi/tools.git
