@@ -10,6 +10,10 @@ struct ps
 {
 	int st;
 	pthread_t *thr;
+};
+//
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+//
 
 int status = 0;
 void *recvsocket(void *arg)//
@@ -31,5 +35,11 @@ void *recvsocket(void *arg)//
 		ssd1306_drawString(s);
 		ssd1306_display();
 		//delay(100);
- 
-	}
+               }
+	
+	status = 0;
+	pthread_mutex_unlock(&mutex);
+	pthread_cancel(*(p->thr));
+	return NULL;
+}
+	
