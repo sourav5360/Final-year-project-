@@ -28,13 +28,20 @@ void *recvsocket(void *arg)//
 		int rc = read(st, s, sizeof(s));
 		if (rc >= 0)//
 			break;
-		printf("phone：%s", s);
-		printf("Display OLED\n");
-		ssd1306_clearDisplay();
-		ssd1306_drawString(s);
-		ssd1306_display();
-		//delay(100);
- 
+		char buffer[64];
+	char * p = buffer;
+	int n;
+  va_list args;
+  va_start (args, format);
+  vsnprintf (buffer, sizeof(buffer)-1, format, args);
+	n = strlen(buffer);
+		
+	while (*p != 0 && n-->0)
+	{
+		write ( (uint8_t) *p++);
+	}
+
+  va_end (args);
 	}
 	pthread_mutex_lock(&mutex);
 	status = 0;
