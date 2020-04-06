@@ -35,21 +35,19 @@ void *recvsocket(void *arg)//
   va_start (args, format);
   vsnprintf (buffer, sizeof(buffer)-1, format, args);
 	n = strlen(buffer);
-		
-	while (*p != 0 && n-->0)
+while(1)
 	{
-		write ( (uint8_t) *p++);
-	}
-
-  va_end (args);
-	}
-	pthread_mutex_lock(&mutex);
-	status = 0;
-	pthread_mutex_unlock(&mutex);
-	status = 1;
-	pthread_cancel(*(p-<thr));
-	return NULL;
-}
+		memset(s, 0, sizeof(s));
+		//bytes_read = read(client, buf, sizeof(buf));
+		int rc = read(st, s, sizeof(s));
+		if (rc >= 0)//
+			break;
+		printf("phone：%s", s);
+		printf("Display OLED\n");
+		ssd1306_Display();
+		ssd1306_display();
+		//delay(100);
+               }
  
 void *sendsocket(void *arg)
 {
