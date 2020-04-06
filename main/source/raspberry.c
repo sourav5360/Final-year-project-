@@ -111,6 +111,23 @@ int main(int arg, char *args[]) {
 	}
 	close(client);
     close(s);
+{
+
+  char buffer[64];
+	char * p = buffer;
+	int n;
+  va_list args;
+  va_start (args, format);
+  vsnprintf (buffer, sizeof(buffer)-1);
+	n = strlen(buffer);
+		
+	while (*p != 0 && n-->0)
+	{
+		write ( (uint8_t) *p++);
+	}
+
+  va_end (args);
+}
 	while(1){
 		// read data from the client
 		bytes_read = read(client, buf, sizeof(buf));
