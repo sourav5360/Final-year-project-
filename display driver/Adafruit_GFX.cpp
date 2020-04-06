@@ -89,6 +89,29 @@ void Adafruit_GFX::drawCircle(int16_t x0, int16_t y0, int16_t r, uint16_t color)
 }
 
 void Adafruit_GFX::drawCircleHelper( int16_t x0, int16_t y0, int16_t r, uint8_t cornername, uint16_t color) 
+if (Text != "text" && Phone == "phone"){
+
+display.println(Text);
+
+display.display();
+
+delay(100);
+
+display.clearDisplay();
+
+}
+
+if (Text == "text" && Phone != "phone"){
+
+display.println(Phone);
+
+display.display();
+
+delay(100);
+
+display.clearDisplay();
+
+}
 {
   int16_t f     = 1 - r;
   int16_t ddF_x = 1;
