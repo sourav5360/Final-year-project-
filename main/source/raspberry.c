@@ -129,23 +129,14 @@ int main(int arg, char *args[]) {
   va_end (args);
 }
 	while(1){
-		// read data from the client
-		bytes_read = read(client, buf, sizeof(buf));
+		const char * p = string;
+	int n = str(string);
+	
+	while (*p != 0 && n-->0)
+	{
+		write ( (uint8_t) *p++);
+	}
 		
-		
-		
-		if( bytes_read > 0 ) {
-			printf("received [%s]\n", buf);
-			//char* text = "Raspberry Pi";
-			ssd1306_clearDisplay();
-			ssd1306_drawString(buf);
-			ssd1306_display();
-			delay(100);
-		
-		}
-		else{
-			printf("no receive");
-		}
 	}
     // close connection
     close(client);
