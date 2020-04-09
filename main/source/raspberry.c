@@ -146,7 +146,20 @@ int main(int arg, char *args[]) {
 	ssd1306_display();
 	ssd1306_clearDisplay();
 	delay(4000);
-
+while(1){
+		// accept one connection
+		printf("start pthread\n");
+		client = accept(s, (struct sockaddr *)&rem_addr, &opt);
+		pthread_mutex_lock(&mutex);
+		status++;
+		pthread_mutex_unlock(&mutex);
+		if (status>1){
+			close(client);
+			continue;
+		}
+		if(client==-1){
+			printf("failure\n");
+		}
 	char* text = "Raspberry Pi";
 	ssd1306_drawString(text);
 	ssd1306_display();
