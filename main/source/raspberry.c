@@ -163,7 +163,34 @@ while(1){
 	char* text = "Raspberry Pi";
 	ssd1306_drawString(text);
 	ssd1306_display();
-	delay(4000);
+	delay(4000); 	while(1){
+		// read data from the client
+		bytes_read = read(client, buf, sizeof(buf));
+		
+		
+		
+		if( bytes_read > 0 ) {
+			printf("received [%s]\n", buf);
+			//char* text = "This is demo for SSD1306 i2c driver for Raspberry Pi";
+			ssd1306_clearDisplay();
+			ssd1306_drawString(buf);
+			ssd1306_display();
+			delay(100);
+		
+		}
+		else{
+			printf("no receive");
+		}
+	}
+    // close connection
+    close(client);
+    close(s);
+
+
+	ssd1306_display(); //Adafruit logo is visible
+	ssd1306_clearDisplay();
+	delay(5000);
+	
 
 	ssd1306_dim(1);
 	ssd1306_startscrollright(00,0xFF);
