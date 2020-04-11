@@ -74,3 +74,20 @@ int main(int arg, char *args[]) {
     bind(s, (struct sockaddr *)&loc_addr, sizeof(loc_addr));
 
     // put socket into listening 
+listen(s,1);
+	//accepting one connection
+	client = accept(s,(struct sockaddr *)&rem_addr, &opt;
+	ba2str( &rem_addr.rc_bdaddr, buf );
+	fprintf(stderr, "accepted connection from %s\n", buf);
+	memset(buf, 0, sizeof(buf));
+	//read data from the client
+	bytes_read= read(client, buf, sizeof(buf));
+	if(bytes_read > 0)
+			{
+				printf("received [%s]\n", buf);
+			}
+	//close connection
+	close (client);
+	close(s);
+	return 0;
+			}
