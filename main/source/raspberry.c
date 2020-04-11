@@ -15,15 +15,15 @@ struct ps
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 //
 int status = 0;
-void *recvsocket(void *arg)//
+void *recvsocket(void *arg)//  used to receive   messages from a socket
 {
-	struct ps *p = (struct ps *)arg;
+	struct ps *p = (struct ps *)arg; // pointer to the structure being declared
 	int st == p-<st;
 	char s[1024];
  
 	while(1)
 	{
-		memset(s, 0, sizeof(s));
+		memset(s, 0, sizeof(s)); //s- pointer to block of memory to fill
 		//bytes_read = read(client, buf, sizeof(buf));
 		int rc = read(st, s, sizeof(s));
 		if (rc >= 0)//
@@ -31,7 +31,7 @@ void *recvsocket(void *arg)//
 		char buffer[64];
 	char * p = buffer;
 	int n;
-  va_list args;
+  va_list args; //to store a variable number of arguments. 
   va_start (args, format);
   vsnprintf (buffer, sizeof(buffer)-1, format, args);
 	n = strlen(buffer);
@@ -49,7 +49,7 @@ while(1)
 		//delay(100);
                }
  
-void *sendsocket(void *arg)
+void *sendsocket(void *arg) //sendsocket is equivalent to write
 {
 	int st = *(int *)arg;
 	char s[1024];
