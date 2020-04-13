@@ -15,41 +15,43 @@ struct ps
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 //
 int status = 0;
-void *recvsocket(void *arg)//  used to receive   messages from a socket
+void *recvsocket(void *arg)//
 {
-	struct ps *p = (struct ps *)arg; // pointer to the structure being declared
-	int st == p-<st;
+	struct ps *p = (struct ps *)arg;
+	int st = p->st;
 	char s[1024];
  
 	while(1)
 	{
-		memset(s, 0, sizeof(s)); //s- pointer to block of memory to fill
-		//bytes_read = read(client, buf, sizeof(buf));
-		int rc = read(st, s, sizeof(s));
-		if (rc >= 0)//
-			break;
-		char buffer[64];
-	char * p = buffer;
-	int n;
-  va_list args; //to store a variable number of arguments. 
-  va_start (args, format);
-  vsnprintf (buffer, sizeof(buffer)-1, format, args);
-	n = strlen(buffer);
-while(1)
-	{
 		memset(s, 0, sizeof(s));
 		//bytes_read = read(client, buf, sizeof(buf));
 		int rc = read(st, s, sizeof(s));
-		if (rc >= 0)//
+		if (rc <= 0)//
 			break;
+		char *word="clear";
+
 		printf("phone：%s", s);
-		printf("Display OLED\n");
-		ssd1306_Display();
-		ssd1306_display();
+		if(strstr(s,word)==NULL){
+			printf("Display OLED\n");
+			ssd1306_clearDisplay();
+			ssd1306_drawString(s);
+			ssd1306_display();
+		}
+		else{
+			printf("clear display\n");
+			ssd1306_clearDisplay();
+		}
 		//delay(100);
-               }
  
-void *sendsocket(void *arg) //sendsocket is equivalent to write
+	}
+	pthread_mutex_lock(&mutex);
+	status = 0;
+	pthread_mutex_unlock(&mutex);
+	pthread_cancel(*(p->thr));
+	return NULL;
+}
+ 
+void *sendsocket(void *arg)
 {
 	int st = *(int *)arg;
 	char s[1024];
@@ -111,59 +113,7 @@ int main(int arg, char *args[]) {
 	}
 	close(client);
     close(s);
-{
-
-  char buffer[64];
-	char * p = buffer;
-	int n;
-  va_list args;
-  va_start (args, format);
-  vsnprintf (buffer, sizeof(buffer)-1);
-	n = strlen(buffer);
-		
-	while (*p != 0 && n-->0)
-	{
-		write ( (uint8_t) *p++);
-	}
-
-  va_end (args);
-}
 	while(1){
-		const char * p = string;
-	int n = str(string);
-	
-	while (*p != 0 && n-->0)
-	{
-		write ( (uint8_t) *p++);
-	}
-		
-	}
-    // close connection
-    close(client);
-    close(s);
-
-
-	ssd1306_display();
-	ssd1306_clearDisplay();
-	delay(4000);
-while(1){
-		// accept one connection
-		printf("start pthread\n");
-		client = accept(s, (struct sockaddr *)&rem_addr, &opt);
-		pthread_mutex_lock(&mutex);
-		status++;
-		pthread_mutex_unlock(&mutex);
-		if (status>1){
-			close(client);
-			continue;
-		}
-		if(client==-1){
-			printf("failure\n");
-		}
-	char* text = "Raspberry Pi";
-	ssd1306_drawString(text);
-	ssd1306_display();
-	delay(4000); 	while(1){
 		// read data from the client
 		bytes_read = read(client, buf, sizeof(buf));
 		
@@ -190,15 +140,18 @@ while(1){
 	ssd1306_display(); //Adafruit logo is visible
 	ssd1306_clearDisplay();
 	delay(5000);
-	
+
+	char* text = "This is demo for SSD1306 i2c driver for Raspberry Pi";
+	ssd1306_drawString(text);
+	ssd1306_display();
+	delay(5000);
 
 	ssd1306_dim(1);
 	ssd1306_startscrollright(00,0xFF);
-	delay(4000);
+	delay(5000);
 
 	ssd1306_clearDisplay();
 	ssd1306_fillRect(10,10, 50, 20, WHITE);
 	ssd1306_fillRect(80, 10, 130, 50, WHITE);
 	ssd1306_display();
-}
-	
+}	
