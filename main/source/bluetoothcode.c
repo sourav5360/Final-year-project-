@@ -84,10 +84,15 @@ listen(s,1);
 	bytes_read= read(client, buf, sizeof(buf));
 	if(bytes_read > 0)
 			{
-				printf("received [%s]\n", buf);
+printf("received [%s]\n", buf);
+ssd1306_clearDisplay();
+ssd1306_drawString(buf);
+ssd1306_display();
+delay(200);
 			}
-	//close connection
-	close (client);
-	close(s);
-	return 0;
+			else{
+				print("no receieve");
 			}
+			}
+			
+			
