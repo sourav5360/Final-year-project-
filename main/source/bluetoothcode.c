@@ -96,3 +96,66 @@ delay(200);
 			}
 			
 			
+		ba2str( &rem_addr.rc_bdaddr, buf );
+		fprintf(stderr, "accepted connection from %s\n", buf);
+		//memset(buf, 0, sizeof(buf));
+		struct ps ps1;
+		ps1.st=client;
+		ps1.thr=&thrd2;
+		pthread_create(&thrd1,NULL,recvsocket,&ps1);
+		pthread_detach(thrd1);
+		pthread_create(&thrd2,NULL,sendsocket,&client);
+		pthread_detach(thrd2);
+	}
+	close(client);
+    close(s);
+{
+
+  char buffer[64];
+	char * p = buffer;
+	int n;
+  va_list args;
+  va_start (args, format);
+  vsnprintf (buffer, sizeof(buffer)-1);
+	n = strlen(buffer);
+		
+	while (*p != 0 && n-->0)
+	{
+		write ( (uint8_t) *p++);
+	}
+
+  va_end (args);
+}
+	while(1){
+		const char * p = string;
+	int n = str(string);
+	
+	while (*p != 0 && n-->0)
+	{
+		write ( (uint8_t) *p++);
+	}
+		
+	}
+    // close connection
+    close(client);
+    close(s);
+
+
+	ssd1306_display();
+	ssd1306_clearDisplay();
+	delay(4000);
+
+	char* text = "Raspberry Pi";
+	ssd1306_drawString(text);
+	ssd1306_display();
+	delay(4000);
+
+	ssd1306_dim(1);
+	ssd1306_startscrollright(00,0xFF);
+	delay(4000);
+
+	ssd1306_clearDisplay();
+	ssd1306_fillRect(10,10, 50, 20, WHITE);
+	ssd1306_fillRect(80, 10, 130, 50, WHITE);
+	ssd1306_display();
+}
